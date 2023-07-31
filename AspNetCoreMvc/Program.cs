@@ -1,9 +1,15 @@
 using Microsoft.AspNetCore.DataProtection;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
+IFileProvider fileProvider = new PhysicalFileProvider(Directory.GetCurrentDirectory());
+
+builder.Services.AddSingleton<IFileProvider>(fileProvider);
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
