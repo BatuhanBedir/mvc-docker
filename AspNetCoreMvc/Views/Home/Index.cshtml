@@ -1,6 +1,15 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<h1>@ViewBag.MySqlCon</h1>
+
+<environment names="Development">
+    <h1>Ortam:Development-local-</h1>
+</environment>
+<environment names="Production">
+    <h1>Ortam:Production-.exe-</h1>
+</environment>
+
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>

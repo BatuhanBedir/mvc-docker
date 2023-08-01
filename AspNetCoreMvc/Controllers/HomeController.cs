@@ -10,14 +10,18 @@ namespace AspNetCoreMvc.Controllers
         private readonly ILogger<HomeController> _logger;
 
         private readonly IFileProvider _fileProvider;
-        public HomeController(ILogger<HomeController> logger, IFileProvider fileProvider)
+        private readonly IConfiguration _configuration;
+        public HomeController(ILogger<HomeController> logger, IFileProvider fileProvider, IConfiguration configuration)
         {
             _logger = logger;
             _fileProvider = fileProvider;
+            _configuration = configuration;
         }
 
         public IActionResult Index()
         {
+            ViewBag.MySqlCon = _configuration["MySqlCon"];
+            //ilk önce ENV'den kontrol eder böyle bir değişken var mı yoksa appsettings'e bakar.
             return View();
         }
 
